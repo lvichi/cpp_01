@@ -10,3 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
+
+Zombie* newZombie(std::string name);
+void randomChump(std::string name);
+
+int main() {
+    Zombie* zombie = newZombie("Heap_Zombie");
+    zombie->announce();
+    randomChump("Stack_Zombie");
+    delete zombie;
+    return 0;
+}
