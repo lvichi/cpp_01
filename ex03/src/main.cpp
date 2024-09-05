@@ -10,21 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
 int main() {
-    std::string     str = "HI THIS IS BRAIN";
-    std::string*    str_ptr = &str;
-    std::string&    str_ref = str;
+    std::cout << "Creating a knife." << std::endl;
+    Weapon knife = Weapon();
+    knife.setType("knife");
 
-    std::cout << "Address in memory of the string: "
-              << &str       << std::endl;
-    std::cout << "Address in memory of the stringPTR: "
-              << &str_ptr   << std::endl;
-    std::cout << "Address in memory of the stringREF: "
-              << &str_ref   << std::endl;
+    std::cout << "Creating a HumanA with a knife." << std::endl;
+    HumanA jose = HumanA(knife);
+    jose.setName("Jose");
 
-    std::cout << "String: "     << str      << std::endl;
-    std::cout << "StringPTR: "  << str_ptr  << std::endl;
-    std::cout << "StringREF "   << str_ref  << std::endl;
+    std::cout << "Creating a HumanB." << std::endl;
+    HumanB pedro = HumanB();
+    pedro.setName("Pedro");
+
+    std::cout << "Fight!" << std::endl;
+    jose.attack();
+    pedro.attack();
+
+    std::cout << "Pedro gets a gun:" << std::endl;
+    Weapon gun = Weapon();
+    gun.setType("gun");
+    pedro.setWeapon(&gun);
+
+    std::cout << "Fight!" << std::endl;
+    jose.attack();
+    pedro.attack();
+
+    return 0;
 }
